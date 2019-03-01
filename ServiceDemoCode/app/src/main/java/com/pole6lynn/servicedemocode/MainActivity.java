@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         switch (v.getId()) {
             case R.id.start_download:
-                String uri = "https://vd3.bdstatic.com/mda-jbsme9e45r1uv6ew/mda-jbsme9e45r1uv6ew.mp4";
+                String uri = "http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180928/5468f986e4394cf1b142c8c32c91d48b.jpeg";
                 mDownLoadBinder.startDownLoad(uri);
                 break;
             case R.id.pause_download:

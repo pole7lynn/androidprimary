@@ -23,7 +23,7 @@ public class DownLoadService extends Service {
     private DownLoadListener mDownLoadListener = new DownLoadListener() {
         @Override
         public void onProgress(int progress) {
-            getNitificationManager().notify(1, getNotificaton("DownLoad...",
+            getNotificationManager().notify(1, getNotificaton("DownLoad...",
                     progress));
         }
 
@@ -31,7 +31,7 @@ public class DownLoadService extends Service {
         public void onSuccess() {
             mDownLoadTask = null;
             stopForeground(true);
-            getNitificationManager().notify(1, getNotificaton("DownLoad success.", -1));
+            getNotificationManager().notify(1, getNotificaton("DownLoad success.", -1));
             Toast.makeText(DownLoadService.this, "DownLoad success",
                     Toast.LENGTH_SHORT).show();
         }
@@ -40,7 +40,7 @@ public class DownLoadService extends Service {
         public void onFailed() {
             mDownLoadTask = null;
             stopForeground(true);
-            getNitificationManager().notify(1, getNotificaton("DownLoad Failed.", -1));
+            getNotificationManager().notify(1, getNotificaton("DownLoad Failed.", -1));
             Toast.makeText(DownLoadService.this, "DownLoad Failed",
                     Toast.LENGTH_SHORT).show();
         }
@@ -67,7 +67,7 @@ public class DownLoadService extends Service {
             if (mDownLoadUri == null) {
                 mDownLoadUri = uri;
                 mDownLoadTask = new DownLoadTask(mDownLoadListener);
-                mDownLoadTask.equals(mDownLoadUri);
+                mDownLoadTask.execute(mDownLoadUri);
                 startForeground(1, getNotificaton("DownLoading...", 0));
                 Toast.makeText(DownLoadService.this, "DownLoading...",
                         Toast.LENGTH_SHORT).show();
@@ -95,7 +95,7 @@ public class DownLoadService extends Service {
                     if (file.exists()) {
                         file.delete();
                     }
-                    getNitificationManager().cancel(1);
+                    getNotificationManager().cancel(1);
                     stopForeground(true);
                     Toast.makeText(DownLoadService.this, "DownLoad Cancel",
                             Toast.LENGTH_SHORT).show();
@@ -112,7 +112,7 @@ public class DownLoadService extends Service {
         return mDownLoadBinder;
     }
 
-    private NotificationManager getNitificationManager() {
+    private NotificationManager getNotificationManager() {
         return (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
     }
 
