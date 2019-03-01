@@ -10,3 +10,6 @@ The demo code used to test for the android primary.
   
 3. MediaDemoCode<br>
   这个Demo里面包含了通知的使用，camera的调用（文件的创建），music的播放和video的播放功能，里面也有运行时权限的检查。
+  
+4. DemoCode<br>
+   这个Demo里面包含了一些常用组件（Activity|BroadCast|ContentProvider）和常用View(listView|Button|RecylerView|Toast等）的基本使用。
